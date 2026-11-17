@@ -116,14 +116,31 @@ public sealed class ZipPackNetInstallerTests : IDisposable
     }
 
     [Fact]
-    public void ApplicationVersion_ComesFromTheProjectFile()
+    public void ApplicationVersion_ComesFromTheProjectFile_AndAllThreeNumbersAgree()
     {
+        // Read <Version>, <AssemblyVersion> and <FileVersion> from ZipPackNet.csproj, so a release only edits that file.
+        string? directory = AppContext.BaseDirectory;
+        while (directory is not null && !File.Exists(Path.Combine(directory, "ZipPack.slnx")))
+        {
+            directory = Path.GetDirectoryName(directory);
+        }
+
+        Assert.NotNull(directory);
+        var project = System.Xml.Linq.XDocument.Load(Path.Combine(directory, "ZipPackNet", "ZipPackNet.csproj"));
+        string Property(string name) => project.Descendants(name).Single().Value.Trim();
+
+        string version = Property("Version");
+        string numeric = version.Split('-', '+')[0];        // "1.2.3-beta.1" -> "1.2.3"
+        Assert.Matches(@"^\d+\.\d+\.\d+(-[0-9A-Za-z.-]+)?$", version);
+        Assert.True(
+            Property("AssemblyVersion") == numeric + ".0" && Property("FileVersion") == numeric + ".0",
+            $"ZipPackNet.csproj: <Version>{version}</Version> needs <AssemblyVersion> and <FileVersion> {numeric}.0, " +
+            $"found {Property("AssemblyVersion")} and {Property("FileVersion")}.");
+
+        // The compiled application carries exactly those values; the status bar shows <Version> without "+commit".
         Assembly app = typeof(ShellIntegration).Assembly;
-
-        Assert.Equal(new Version(1, 0, 0, 0), app.GetName().Version);
-        Assert.Equal("1.0.0.0", app.GetCustomAttribute<AssemblyFileVersionAttribute>()?.Version);
-
-        // What Application.ProductVersion and the status bar show: no "+commit" suffix.
-        Assert.Equal("1.0.0", app.GetCustomAttribute<AssemblyInformationalVersionAttribute>()?.InformationalVersion);
+        Assert.Equal(Version.Parse(numeric + ".0"), app.GetName().Version);
+        Assert.Equal(numeric + ".0", app.GetCustomAttribute<AssemblyFileVersionAttribute>()?.Version);
+        Assert.Equal(version, app.GetCustomAttribute<AssemblyInformationalVersionAttribute>()?.InformationalVersion);
     }
 }

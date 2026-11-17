@@ -17,8 +17,8 @@
       Application.ProductVersion returns <Version>; UpdateManager.CurrentVersion returns the installed one.
     -->
     <Version>1.0.1</Version>
-    <AssemblyVersion>1.1.0.0</AssemblyVersion>
-    <FileVersion>1.1.0.0</FileVersion>
+    <AssemblyVersion>1.0.1.0</AssemblyVersion>
+    <FileVersion>1.0.1.0</FileVersion>
     <!-- Keeps Application.ProductVersion at "1.0.0" instead of "1.0.0+<commit hash>". -->
     <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
     <!--

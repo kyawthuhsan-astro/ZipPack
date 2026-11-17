@@ -6,6 +6,8 @@ All notable changes to ZipPack are recorded here. The format follows
 
 ## [Unreleased]
 
+## [1.0.1] — 2023-10-17
+
 ### Added
 
 - The installer associates `.7z` and `.zst` with ZipPack (double-click opens the archive) and adds the Explorer
@@ -45,5 +47,6 @@ All notable changes to ZipPack are recorded here. The format follows
 - Explorer right-click menu for the current user; drag and drop; command line.
 - Installer and automatic updates with Velopack; the version in the status bar checks for updates.
 
-[Unreleased]: https://github.com/kyawthuhsan-astro/ZipPack/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/kyawthuhsan-astro/ZipPack/compare/v1.0.1...HEAD
+[1.0.1]: https://github.com/kyawthuhsan-astro/ZipPack/releases/tag/v1.0.1
 [1.0.0]: https://github.com/kyawthuhsan-astro/ZipPack/releases/tag/v1.0.0

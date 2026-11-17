@@ -17,10 +17,16 @@ public sealed class ZipPackNetImageAndUpdateTests : IDisposable
     [Fact]
     public void Version_IsTheProjectVersion()
     {
+        // Whatever <Version> the project file says (checked against the file in ZipPackNetInstallerTests).
+        string version = typeof(UpdateService).Assembly
+            .GetCustomAttributes(typeof(System.Reflection.AssemblyInformationalVersionAttribute), false)
+            .Cast<System.Reflection.AssemblyInformationalVersionAttribute>()
+            .Single().InformationalVersion;
+
         var updates = new UpdateService(feed: null);
-        Assert.Equal("1.0.0", updates.CurrentVersion);
-        Assert.Equal("v1.0.0", updates.DisplayVersion);
-        Assert.Equal("v1.0.0", new UpdateWorkflow(updates).DisplayVersion);
+        Assert.Equal(version, updates.CurrentVersion);
+        Assert.Equal("v" + version, updates.DisplayVersion);
+        Assert.Equal("v" + version, new UpdateWorkflow(updates).DisplayVersion);
     }
 
     [Fact]
