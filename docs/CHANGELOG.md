@@ -6,7 +6,7 @@ All notable changes to ZipPack are recorded here. The format follows
 
 ## [Unreleased]
 
-## [1.0.1] — 2023-10-17
+## [1.0.1] — 2026-11-17
 
 ### Added
 
@@ -19,11 +19,6 @@ All notable changes to ZipPack are recorded here. The format follows
   archive's "downloaded from the internet" mark is kept.
 - `ArchiveExtractRequest.EntryPaths` extracts only selected entries (7-Zip formats and Zstandard).
 
-### Fixed
-
-- "Compress with ZipPack" / "Extract with ZipPack" from the Explorer menu crashed silently while the ZipPack
-  window was open.
-
 ### Changed
 
 - Faster 7z compression: the LZMA2 block size is chosen per level (Low 1 MiB … Ultra 16 MiB) so every core
@@ -32,6 +27,11 @@ All notable changes to ZipPack are recorded here. The format follows
   Ultra about 5× faster, at the same size. `ThreadCount = 1` restores single-threaded compression.
 - Extraction reserves each file's size in advance and restores timestamps and attributes without reopening
   the file.
+
+### Fixed
+
+- "Compress with ZipPack" / "Extract with ZipPack" from the Explorer menu crashed silently while the ZipPack
+  window was open.
 
 ## [1.0.0] — 2026-11-17
 
