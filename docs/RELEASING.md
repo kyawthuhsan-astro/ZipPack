@@ -57,7 +57,7 @@ releases of the repository) and install any release with a **higher** version an
    git add -A
    git commit -m "Release 1.1.0"
    git tag v1.1.0
-   git push origin main --tags
+   git push origin master --tags
    ```
 
    Without Actions, upload the local build instead (needs a token with *contents: write*):
@@ -87,19 +87,20 @@ releases of the repository) and install any release with a **higher** version an
 
    ```text
    cd D:\Projects\ZipPack
-   git init -b main
+   git init -b master
    git add -A
    git status                      # review the list before committing
    git commit -m "Initial import of ZipPack 1.0.0"
    git remote add origin https://github.com/kyawthuhsan-astro/ZipPack.git
-   git push -u origin main
+   git push -u origin master
    ```
 
 5. **Repository settings** on GitHub:
    - *Settings → Actions → General → Workflow permissions*: **Read and write permissions** (the release workflow
      creates releases with `GITHUB_TOKEN`).
    - *Settings → Code security*: enable **Private vulnerability reporting** (`SECURITY.md` points to it).
-   - *Settings → Branches*: protect `main` and require the **CI** check before merging (optional).
+   - *Settings → Rules → Rulesets*: protect the default branch (`master`) and require the **CI** check before
+     merging (optional).
    - *About* (gear icon on the main page): description, website, topics such as `compression`, `7zip`,
      `zstandard`, `winforms`, `dotnet`.
    - GitHub shows `docs/README.md` on the main page and links `docs/CONTRIBUTING.md`, `docs/SECURITY.md` and

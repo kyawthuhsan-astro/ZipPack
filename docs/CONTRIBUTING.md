@@ -38,7 +38,7 @@ merged.
 
 ## Pull requests
 
-1. Fork the repository and create a branch from `main` (`fix/…`, `feature/…`).
+1. Fork the repository and create a branch from `master` (`fix/…`, `feature/…`).
 2. Keep a pull request to one topic; describe *what* changed and *why*.
 3. Make sure `dotnet build` (0 warnings) and `dotnet test` pass — CI runs both.
 4. Add a line under **Unreleased** in [CHANGELOG.md](CHANGELOG.md) for user-visible changes.
