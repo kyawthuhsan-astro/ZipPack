@@ -1,0 +1,32 @@
+# Build output
+bin/
+obj/
+publish/
+Releases/
+.vpk/
+artifacts/
+TestResults/
+
+# Visual Studio / Rider / VS Code
+.vs/
+.idea/
+.vscode/
+*.user
+*.suo
+*.userprefs
+*.rsuser
+*.DotSettings.user
+
+# NuGet
+*.nupkg
+*.snupkg
+.nuget/packages/
+
+# OS
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# 7z.dll is committed on purpose (SevenZipCore/x64, SevenZipCore/x86); keep it tracked.
+!SevenZipCore/x64/7z.dll
+!SevenZipCore/x86/7z.dll

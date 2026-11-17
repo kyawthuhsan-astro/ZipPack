@@ -1,0 +1,8 @@
+<Solution>
+  <Project Path="MagickNetCore/MagickNetCore.csproj" Id="1b910506-5d67-4a63-a0fa-1f711174b114" />
+  <Project Path="SevenZipCore/SevenZipCore.csproj" />
+  <Project Path="ZipPack/ZipPack.csproj" />
+  <Project Path="ZipPackNet/ZipPackNet.csproj" Id="c69c4ef9-d3bc-4505-ab41-6bc4c4422635" />
+  <Project Path="ZipPackTest/ZipPackTest.csproj" />
+  <Project Path="ZstdCore/ZstdCore.csproj" />
+</Solution>

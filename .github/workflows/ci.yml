@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-test:
+    # SevenZipCore and the WinForms app are Windows-only.
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 11.0.x
+
+      - name: Build (warnings are errors)
+        run: dotnet build ZipPack.slnx -c Release -warnaserror
+
+      - name: Test
+        run: dotnet test --project ZipPackTest\ZipPackTest.csproj -c Release --no-build

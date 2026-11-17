@@ -1,0 +1,43 @@
+name: Bug report
+description: Something does not work as expected.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting! Security problems go to **Security → Report a vulnerability** instead (see docs/SECURITY.md).
+        Please do not attach files with personal data or passwords.
+  - type: input
+    id: version
+    attributes:
+      label: ZipPack version
+      description: Shown at the bottom right of the main window, e.g. v1.0.0.
+    validations:
+      required: true
+  - type: input
+    id: windows
+    attributes:
+      label: Windows version
+      placeholder: Windows 11 24H2, x64
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Drop a folder on the window
+        2. Choose Compress, format 7z, level Ultra
+        3. …
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect, and what happened instead?
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Error message, screenshots or a sample file

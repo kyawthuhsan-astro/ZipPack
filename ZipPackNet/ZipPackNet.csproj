@@ -1,0 +1,58 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+	<TargetFramework>net11.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <AssemblyTitle>ZipPack</AssemblyTitle>
+    <Product>ZipPack</Product>
+    <ApplicationIcon>Assets\app.ico</ApplicationIcon>
+	<SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+    <!--
+      The single source of truth for the version. build-release.ps1 and the release workflow read <Version> and
+      pass it to "vpk pack", so the installer, the update feed and the window (v1.0.0) always agree.
+      Application.ProductVersion returns <Version>; UpdateManager.CurrentVersion returns the installed one.
+    -->
+    <Version>1.0.1</Version>
+    <AssemblyVersion>1.1.0.0</AssemblyVersion>
+    <FileVersion>1.1.0.0</FileVersion>
+    <!-- Keeps Application.ProductVersion at "1.0.0" instead of "1.0.0+<commit hash>". -->
+    <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
+    <!--
+      Where Velopack looks for new releases. Any of:
+        https://github.com/<owner>/<repo>         GitHub Releases (vpk upload github)
+        https://downloads.example.com/zippack     a static web folder holding releases.win.json (vpk upload s3/http)
+        \\server\share\zippack  or  D:\Releases   a local or network folder (vpk pack -o)
+      Empty disables update checks; the version label then only shows the version.
+    -->
+    <UpdateFeedUrl></UpdateFeedUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <AssemblyMetadata Include="UpdateFeedUrl" Value="$(UpdateFeedUrl)" />
+  </ItemGroup>
+
+  <!-- Consumed by the generated ApplicationConfiguration.Initialize(): no app.manifest or code needed. -->
+  <PropertyGroup>
+    <ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
+    <ApplicationVisualStyles>true</ApplicationVisualStyles>
+    <ApplicationUseCompatibleTextRendering>false</ApplicationUseCompatibleTextRendering>
+    <ApplicationDefaultFont>Segoe UI, 9pt</ApplicationDefaultFont>    
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ZipPack\ZipPack.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="ZipPackTest" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Velopack" Version="1.2.161" />
+  </ItemGroup>
+
+</Project>

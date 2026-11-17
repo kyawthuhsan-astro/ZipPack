@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net11.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MagickNetCore\MagickNetCore.csproj" />
+    <ProjectReference Include="..\SevenZipCore\SevenZipCore.csproj" />
+    <ProjectReference Include="..\ZstdCore\ZstdCore.csproj" />
+  </ItemGroup>
+
+</Project>

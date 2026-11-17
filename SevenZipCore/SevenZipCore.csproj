@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net11.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <!-- Required by the source-generated COM interop with the native 7-Zip library. -->
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <!-- The native 7-Zip engine. It is copied next to every application that references this library. -->
+  <ItemGroup>
+    <Content Include="x64\7z.dll" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="x86\7z.dll" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="ZipPackTest" />
+  </ItemGroup>
+
+</Project>
